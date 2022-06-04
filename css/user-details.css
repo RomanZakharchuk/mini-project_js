@@ -1,0 +1,27 @@
+.content {
+    margin-bottom: 20px;
+    border: 1px solid black;
+    background: #939393;
+    padding: 20px;
+}
+
+.wrap_user {
+    text-align: center;
+}
+
+.btn {
+    width: 90%;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.wrapper {
+    width: 19%;
+    border: 1px solid black;
+    background: violet;
+    margin-bottom: 5px;
+}

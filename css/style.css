@@ -1,0 +1,23 @@
+body {
+    background: silver;
+}
+
+.title {
+    text-align: center;
+}
+
+.content {
+    width: 1024px;
+    margin: 0 auto;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.wrap_user {
+    width: 45%;
+    border: 1px solid black;
+    margin: 2px;
+    background: #e3dfdf;
+}
