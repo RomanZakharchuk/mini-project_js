@@ -31,11 +31,13 @@ fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(value => {
         value.forEach(user => {
+            const {id, name} = user;
+
             const blockUser = document.createElement('div');
             blockUser.classList.add('wrap_user');
             blockUser.innerHTML = `
-                <h2>${user.id}</h2>
-                <h2>${user.name}</h2>
+                <h2>${id}</h2>
+                <h2>${name}</h2>
             `;
             content.appendChild(blockUser);
 

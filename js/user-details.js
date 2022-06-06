@@ -1,32 +1,37 @@
 const getUser = JSON.parse(localStorage.getItem('user'));
 
-const content = document.querySelector('.content');
-const title = document.querySelector('.title');
+const content = document.querySelector('.content'),
+    title = document.querySelector('.title');
 
 getUser.forEach(user => {
+    const {id, name, username, email, phone, website} = user;
+    const {street, suite, city, zipecode} = user.address;
+    const {lat, lng} = user.address.geo;
+    const {catchPhrase, bs} = user.company;
+
     const blockUser = document.createElement('div');
     blockUser.classList.add('wrap_user');
     blockUser.innerHTML = `
-        <h1>ID: ${user.id}</h1>
-        <h2>Name: ${user.name}</h2>
-        <h2>User Name: ${user.username}</h2>
-        <p>Email: ${user.email}</p>
+        <h1>ID: ${id}</h1>
+        <h2>Name: ${name}</h2>
+        <h2>User Name: ${username}</h2>
+        <p>Email: ${email}</p>
         <span><b>Address:</b>
-            <p>Street: ${user.address.street}</p>
-            <p>Siute: ${user.address.suite}</p>
-            <p>City: ${user.address.city}</p>
-            <p>Zipcode: ${user.address.zipecode}</p>
+            <p>Street: ${street}</p>
+            <p>Siute: ${suite}</p>
+            <p>City: ${city}</p>
+            <p>Zipcode: ${zipecode}</p>
         </span>
         <span><b>Geo:</b>
-            <p>Lat: ${user.address.geo.lat}</p>
-            <p>Lng: ${user.address.geo.lng}</p>
+            <p>Lat: ${lat}</p>
+            <p>Lng: ${lng}</p>
         </span>
-        <p>Phone: ${user.phone}</p>
-        <p>Website: ${user.website}</p>
+        <p>Phone: ${phone}</p>
+        <p>Website: ${website}</p>
         <span><b>Company:</b>
             <p>Name: ${user.company.name}</p>
-            <p>Catch Phrase: ${user.company.catchPhrase}</p>
-            <p>Bs: ${user.company.bs}</p>
+            <p>Catch Phrase: ${catchPhrase}</p>
+            <p>Bs: ${bs}</p>
         </span>
     `;
     content.appendChild(blockUser);
@@ -42,10 +47,12 @@ getUser.forEach(user => {
             .then(value => {
                 value.forEach(post => {
                     if (post.userId === user.id) {
+                        const {title} = post;
+
                         const blockTitle = document.createElement('div');
                         blockTitle.classList.add('wrapper');
                         blockTitle.innerHTML = `
-                            <p>Title: ${post.title}</p>
+                            <p>Title: ${title}</p>
                        `;
                         title.appendChild(blockTitle);
 

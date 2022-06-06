@@ -1,16 +1,18 @@
 const getPost = JSON.parse(localStorage.getItem('post'));
 
-const content = document.querySelector('.content');
-const wrapComments = document.querySelector('.wrap-comments');
+const content = document.querySelector('.content'),
+    wrapComments = document.querySelector('.wrap-comments');
 
 getPost.forEach(post => {
+    const {userId, id, title, body} = post;
+
     const blockPost = document.createElement('div');
     blockPost.classList.add('wrap_post');
     blockPost.innerHTML = `
-        <h1>User ID: ${post.userId}</h1>
-        <h2>Id: ${post.id}</h2>
-        <h2>Title: ${post.title}</h2>
-        <p><b>Body:</b> ${post.body}</p>
+        <h1>User ID: ${userId}</h1>
+        <h2>Id: ${id}</h2>
+        <h2>Title: ${title}</h2>
+        <p><b>Body:</b> ${body}</p>
     `;
     content.appendChild(blockPost);
 
@@ -24,7 +26,7 @@ getPost.forEach(post => {
             .then(response => response.json())
             .then(value => {
                 value.forEach(comment => {
-                    if (comment.postId === post.userId) {
+                    if (comment.postId === userId) {
                         const blockComment = document.createElement('div');
                         blockComment.classList.add('item-comments');
                         blockComment.innerHTML = `
